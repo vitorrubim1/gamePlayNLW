@@ -10,10 +10,12 @@ interface AvatarProps {
 }
 
 export function Avatar({ urlImage }: AvatarProps) {
+  const { secondary50, secondary70 } = theme.colors;
+
   return (
     <LinearGradient
       style={styles.container}
-      colors={[theme.colors.secondary50, theme.colors.secondary70]}
+      colors={[secondary50, secondary70]}
     >
       <Image
         source={{ uri: urlImage }}
@@ -22,5 +24,3 @@ export function Avatar({ urlImage }: AvatarProps) {
     </LinearGradient>
   );
 }
-
-export default Avatar;

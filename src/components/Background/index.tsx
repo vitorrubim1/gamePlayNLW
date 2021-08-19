@@ -3,18 +3,19 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { styles } from './styles';
 import { theme } from '../../global/styles/theme';
-
 interface BackgroundProps {
-	children: ReactNode;
+  children: ReactNode;
 }
 
 export function Background({ children }: BackgroundProps) {
-	return (
-		<LinearGradient
-			style={styles.container}
-			colors={[theme.colors.secondary80, theme.colors.secondary100]}
-		>
-			{children}
-		</LinearGradient>
-	)
+  const { secondary80, secondary100 } = theme.colors;
+
+  return (
+    <LinearGradient
+      style={styles.container}
+      colors={[secondary80, secondary100]}
+    >
+      {children}
+    </LinearGradient>
+  )
 }
