@@ -26,7 +26,19 @@ export function Home() {
       category: '1',
       date: '22/06 às 20:40h',
       description: 'Lorem nobis accusamus, architecto doloremque sed, dolor facilis. Odit magnam autem, debitis quasi laudantium expedita facilis inventore.'
-    }
+    },
+    {
+      id: '2',
+      guild: {
+        id: '1',
+        name: 'Lendários',
+        icon: null,
+        owner: true
+      },
+      category: '1',
+      date: '22/06 às 20:40h',
+      description: 'Lorem nobis accusamus, architecto doloremque sed, dolor facilis. Odit magnam autem, debitis quasi laudantium expedita facilis inventore.'
+    },
   ];
 
   function handleSelectCategory(categoryId: string) {
@@ -39,7 +51,6 @@ export function Home() {
 
   return (
     <Background>
-      <View style={styles.container}>
         <View style={styles.header}>
           <Profile />
           <ButtonAdd />
@@ -61,7 +72,6 @@ export function Home() {
             showsVerticalScrollIndicator={false}
           />
         </View>
-      </View>
     </Background>
   );
 }
