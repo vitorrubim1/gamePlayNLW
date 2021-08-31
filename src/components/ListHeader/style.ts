@@ -10,6 +10,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
 
     paddingHorizontal: 24,
+    
+    marginTop: 27,
   },
 
   title: {

@@ -9,9 +9,6 @@ export const styles = StyleSheet.create({
 
     alignSelf: 'flex-end',
 
-    marginVertical: 31,
-    marginTop: 2,
-
     backgroundColor: theme.colors.secondary40,    
   }
 });
