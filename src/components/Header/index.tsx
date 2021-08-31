@@ -34,7 +34,7 @@ export function Header({ title, actions }: HeaderProps) {
 
       <Text style={styles.title}>{title}</Text>
 
-      {actions && <View>{actions}</View>}
+      {actions ? <View>{actions}</View> : <View style={{ width: 24 }} />}
     </LinearGradient>
   );
 }

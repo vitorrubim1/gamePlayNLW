@@ -59,28 +59,27 @@ export function Home() {
         <ButtonAdd onPress={() => navigation.navigate('AppointmentCreate')} />
       </View>
 
-      <CategorySelect 
-        categorySelected={category} 
-        setCategory={handleSelectCategory} 
+      <CategorySelect
+        categorySelected={category}
+        setCategory={handleSelectCategory}
       />
 
-      <View style={styles.content}>
-        <ListHeader title="Partidas agendadas" subtitle="Total 6" />
+      <ListHeader title="Partidas agendadas" subtitle="Total 6" />
 
-        <FlatList
-          data={appointments}
-          keyExtractor={(item) => item.id}
-          renderItem={(({ item }) => (
-            <Appointment
-              data={item}
-              onPress={() => navigation.navigate('AppointmentDetails')}
-            />
-          ))}
-          ItemSeparatorComponent={() => <ListDivider />}
-          style={styles.matches}
-          showsVerticalScrollIndicator={false}
-        />
-      </View>
+      <FlatList
+        data={appointments}
+        keyExtractor={(item) => item.id}
+        renderItem={(({ item }) => (
+          <Appointment
+            data={item}
+            onPress={() => navigation.navigate('AppointmentDetails')}
+          />
+        ))}
+        ItemSeparatorComponent={() => <ListDivider />}
+        contentContainerStyle={{ paddingBottom: 69 }}
+        style={styles.matches}
+        showsVerticalScrollIndicator={false}
+      />
     </Background>
   );
 }
