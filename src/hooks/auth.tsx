@@ -1,13 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
 import * as AuthSession from 'expo-auth-session';
 
-import {
-  RESPONSE_TYPE,
-  REDIRECT_URI,
-  CDN_IMAGE,
-  CLIENT_ID,
-  SCOPE,
-} from '../configs';
+const { RESPONSE_TYPE } = process.env;
+const { REDIRECT_URI } = process.env;
+const { CDN_IMAGE } = process.env;
+const { CLIENT_ID } = process.env;
+const { SCOPE } = process.env;
 
 import { api } from '../services/api';
 
@@ -31,7 +29,8 @@ interface AuthContextData {
 
 type AuthorizationResponse = AuthSession.AuthSessionResult & {
   params: {
-    access_token: string;
+    access_token?: string;
+    error?: string;
   }
 }
 
@@ -53,7 +52,7 @@ const AuthProvider: React.FC = ({ children }) => {
         type
       } = await AuthSession.startAsync({ authUrl }) as AuthorizationResponse;
 
-      if (type === "success") {
+      if (type === "success" && !params.error) {
         //injecting the Bearer type token that I get from the authentication response in the request header
         api.defaults.headers.authorization = `Bearer ${params.access_token}`;
 
@@ -68,14 +67,11 @@ const AuthProvider: React.FC = ({ children }) => {
           firstName,
           token: params.access_token
         })
-
-        setLoading(false);
-      } else {
-        setLoading(false);
       }
-
     } catch {
       throw new Error('Não foi possível autenticar');
+    } finally {
+      setLoading(false);
     }
   }
 
