@@ -13,7 +13,7 @@ import CalendarSvg from '../../assets/calendar.svg';
 import { theme } from '../../global/styles/theme';
 import { styles } from './styles';
 
-interface AppointmentProps {
+export interface AppointmentProps {
   id: string;
   guild: GuildProps;
   category: string;
@@ -37,13 +37,13 @@ export function Appointment({ data, ...rest }: Props) {
           style={styles.guildIconContainer}
           colors={[secondary50, secondary70]}
         >
-          <GuildIcon />
+          <GuildIcon guildId={data.guild.id} iconId={data.guild.icon} />
         </LinearGradient>
 
         <View style={styles.content}>
           <View style={styles.header}>
             <Text style={styles.title}>{data.guild.name}</Text>
-            <Text style={styles.category}>{category.title}</Text>
+            <Text style={styles.category}>{category?.title}</Text>
           </View>
 
           <View style={styles.footer}>
