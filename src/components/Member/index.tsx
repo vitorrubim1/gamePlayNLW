@@ -8,7 +8,7 @@ import { styles } from './styles';
 
 export interface MemberProps {
   id: string;
-  userName: string;
+  username: string;
   avatar_url: string;
   status: string;
 }
@@ -26,7 +26,7 @@ export function Member({ data }: Props) {
       <Avatar urlImage={data.avatar_url} />
 
       <View>
-        <Text style={styles.title}>{data.userName}</Text>
+        <Text style={styles.title}>{data.username}</Text>
 
         <View style={styles.status}>
           <View
