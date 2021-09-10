@@ -32,6 +32,10 @@ export function Home() {
     }
   }
 
+  function handleAppointmentDetails(guildSelected: AppointmentProps) {
+    navigation.navigate('AppointmentDetails', { guildSelected })
+  }
+
   async function loadAppointment() {
     const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
     const storageAppointments: AppointmentProps[] =
@@ -78,7 +82,7 @@ export function Home() {
             renderItem={(({ item }) => (
               <Appointment
                 data={item}
-                onPress={() => navigation.navigate('AppointmentDetails')}
+                onPress={() => handleAppointmentDetails(item)}
               />
             ))}
             ItemSeparatorComponent={() => <ListDivider />}
