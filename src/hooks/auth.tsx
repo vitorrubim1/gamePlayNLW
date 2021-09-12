@@ -26,7 +26,8 @@ interface AuthContextData {
   loading: boolean;
 
   //functions
-  signIn: () => Promise<void>
+  signIn: () => Promise<void>;
+  singOut: () => Promise<void>;
 }
 
 type AuthorizationResponse = AuthSession.AuthSessionResult & {
@@ -80,6 +81,12 @@ const AuthProvider: React.FC = ({ children }) => {
     }
   }
 
+  async function singOut() {
+    setUser({} as User);
+
+    await AsyncStorage.removeItem(COLLECTION_USERS);
+  }
+
   async function loadUserStorageData() {
     const storage = await AsyncStorage.getItem(COLLECTION_USERS);
 
@@ -104,6 +111,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
       //functions
       signIn,
+      singOut
     }}>
       {children}
     </AuthContext.Provider>
