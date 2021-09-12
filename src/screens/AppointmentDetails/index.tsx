@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Fontisto } from "@expo/vector-icons"
+import { Fontisto } from "@expo/vector-icons";
 import { useRoute } from '@react-navigation/native';
 import { BorderlessButton } from 'react-native-gesture-handler';
+import * as Linking from "expo-linking";
 import {
   ImageBackground,
   Text,
@@ -71,6 +72,10 @@ export function AppointmentDetails() {
     Share.share({ message, url: widget.instant_invite });
   }
 
+  function handleOpenGuildServer() {
+    Linking.openURL(widget.instant_invite);
+  }
+
   return (
     <Background>
       <Header title="Detalhes" actions={
@@ -105,9 +110,14 @@ export function AppointmentDetails() {
             style={styles.members}
           />
 
-          <View style={styles.footer}>
-            <ButtonIcon title="Entrar na partida" />
-          </View>
+          {guildSelected.guild.owner && (
+            <View style={styles.footer}>
+              <ButtonIcon
+                title="Entrar na partida"
+                onPress={handleOpenGuildServer}
+              />
+            </View>
+          )}
         </>
       )}
     </Background>
